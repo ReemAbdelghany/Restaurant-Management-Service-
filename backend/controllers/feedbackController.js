@@ -3,8 +3,8 @@ const Feedback = require('../models/Feedback');
 // Create a new feedback
 async function createFeedback(req, res) {
     try {
-        const { experience_id, customer_id, rating, feedback } = req.body;
-        const newFeedback = new Feedback({ experience_id, customer_id, rating, feedback });
+        const { customer_id, rating, feedback } = req.body;
+        const newFeedback = new Feedback({ customer_id, rating, feedback });
         const savedFeedback = await newFeedback.save();
         res.status(201).json(savedFeedback);
     } catch (error) {
@@ -39,10 +39,10 @@ async function getFeedbackById(req, res) {
 // Update feedback by ID
 async function updateFeedback(req, res) {
     try {
-        const { experience_id, customer_id, rating, feedback } = req.body;
+        const { customer_id, rating, feedback } = req.body;
         const updatedFeedback = await Feedback.findByIdAndUpdate(
             req.params.id,
-            { experience_id, customer_id, rating, feedback },
+            { customer_id, rating, feedback },
             { new: true }
         );
         if (updatedFeedback) {

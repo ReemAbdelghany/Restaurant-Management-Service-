@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const FeedbackSchema = new mongoose.Schema({
-    experience_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
     customer_id: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
