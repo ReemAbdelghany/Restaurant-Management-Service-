@@ -3,8 +3,8 @@ const OrderType = require('../models/OrderType');
 // Create a new order type
 async function createOrderType(req, res) {
     try {
-        const { order_type_id, type_name } = req.body;
-        const newOrderType = new OrderType({ order_type_id, type_name });
+        const { type_name } = req.body;
+        const newOrderType = new OrderType({ type_name });
         const savedOrderType = await newOrderType.save();
         res.status(201).json(savedOrderType);
     } catch (error) {

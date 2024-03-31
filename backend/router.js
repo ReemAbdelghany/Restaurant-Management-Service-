@@ -19,18 +19,18 @@ router.post("/menutype/updateMenuType", updateMenuType);
 router.delete("/menutype/deleteMenuType", deleteMenuType);
 
 // Routes for Order component
-router.get("/order", getAllOrders);
-router.post("/order/createOrder", createOrder);
-router.post("/order/getOrder", getOrderById);
-router.post("/order/updateOrder", updateOrder);
-router.delete("/order/deleteOrder", deleteOrder);
+router.get("/order", getAllOrders); // Get all orders
+router.post("/order/createOrder", createOrder); // Create a new order
+router.get("/order/:id", getOrderById); // Get order by ID
+router.post("/order/updateOrder/:id", updateOrder); // Update order by ID
+router.delete("/order/deleteOrder/:id", deleteOrder); // Delete order by ID
 
 // Routes for OrderType component
-router.get("/ordertype", getAllOrderTypes);
-router.post("/ordertype/createOrderType", createOrderType);
-router.post("/ordertype/getOrderType", getOrderTypeById);
-router.post("/ordertype/updateOrderType", updateOrderType);
-router.delete("/ordertype/deleteOrderType", deleteOrderType);
+router.get("/ordertype", getAllOrderTypes); // Get all order types
+router.post("/ordertype/createOrderType", createOrderType); // Create a new order type
+router.get("/ordertype/:id", getOrderTypeById); // Get order type by ID
+router.post("/ordertype/updateOrderType/:id", updateOrderType); // Update order type by ID
+router.delete("/ordertype/deleteOrderType/:id", deleteOrderType); // Delete order type by ID
 
 router.get("/", (req, res) => {
   res.send("Let's build a CRUD API!");
