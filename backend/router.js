@@ -5,6 +5,8 @@ const { getUsers, createUser, getUserById, deleteUser, updateUser } = require(".
 const { getUserTypes, createUserType, getUserTypeById, deleteUserType, updateUserType } = require("./controllers/userTypeController");
 const { getCustomerById, createCustomer, getAllCustomers, updateCustomer, deleteCustomer } = require("./controllers/customerController");
 const { createFeedback, getAllFeedback, getFeedbackById, updateFeedback, deleteFeedback } = require("./controllers/feedbackController");
+const { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } = require("./controllers/orderController");
+const { createOrderType, getAllOrderTypes, getOrderTypeById, updateOrderType, deleteOrderType } = require("./controllers/orderTypeController");
 
 // Routes for Menu component
 router.get("/menu", getMenu);
@@ -19,6 +21,20 @@ router.post("/menutype/createMenuType", createMenuType);
 router.post("/menutype/getMenuType", getMenuTypeById);
 router.post("/menutype/updateMenuType", updateMenuType);
 router.delete("/menutype/deleteMenuType", deleteMenuType);
+
+// Routes for Order component
+router.get("/order", getAllOrders);
+router.post("/order/createOrder", createOrder);
+router.get("/order/:id", getOrderById);
+router.post("/order/updateOrder/:id", updateOrder);
+router.delete("/order/deleteOrder/:id", deleteOrder);
+
+// Routes for OrderType component
+router.get("/ordertype", getAllOrderTypes);
+router.post("/ordertype/createOrderType", createOrderType);
+router.get("/ordertype/:id", getOrderTypeById);
+router.post("/ordertype/updateOrderType/:id", updateOrderType);
+router.delete("/ordertype/deleteOrderType/:id", deleteOrderType);
 
 // Routes for Customer component
 router.get("/customer/:id", getCustomerById);
