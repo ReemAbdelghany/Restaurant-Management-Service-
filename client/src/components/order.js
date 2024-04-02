@@ -7,7 +7,8 @@ function OrderPage() {
         customer_id: '',
         user_id: '',
         menu_id: '',
-        total_amount: ''
+        total_amount: '',
+        orderType: ''
     });
 
     useEffect(() => {
@@ -48,7 +49,8 @@ function OrderPage() {
                     customer_id: '',
                     user_id: '',
                     menu_id: '',
-                    total_amount: ''
+                    total_amount: '',
+                    orderType: ''
                 });
                 fetchOrders();
             }
@@ -74,7 +76,8 @@ function OrderPage() {
             customer_id: order.customer_id,
             user_id: order.user_id,
             menu_id: order.menu_id,
-            total_amount: order.total_amount
+            total_amount: order.total_amount,
+            orderType: order.orderType
         });
     };
 
@@ -97,6 +100,15 @@ function OrderPage() {
                     <label className="form-label">Total Amount</label>
                     <input type="text" className="form-control" name="total_amount" value={formData.total_amount} onChange={handleChange} required />
                 </div>
+                <div className="mb-3">
+                    <label className="form-label">Order Type</label>
+                    <select className="form-control" name="orderType" value={formData.orderType} onChange={handleChange} required>
+                        <option value="">Select order type</option>
+                        <option value="Dine in">Dine in</option>
+                        <option value="Delivery">Delivery</option>
+                        <option value="PickUp">PickUp</option>
+                    </select>
+                </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 
@@ -111,27 +123,29 @@ function OrderPage() {
                                 <th>Menu ID</th>
                                 <th>Order Date</th>
                                 <th>Total Amount</th>
+                                <th>Order Type</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map((order, index) => (
-                                <tr key={index}>
-                                    <td>{order.customer_id}</td>
-                                    <td>{order.user_id}</td>
-                                    <td>{order.menu_id}</td>
-                                    <td>{new Date(order.order_date).toLocaleDateString()}</td>
-                                    <td>{order.total_amount}</td>
-                                    <td>
-                                        <button className="btn btn-warning" onClick={() => handleEdit(order)}>Edit</button>
-                                    </td>
-                                    <td>
-                                        <button className="btn btn-danger" onClick={() => handleDelete(order._id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
+    {orders.map((order, index) => (
+        <tr key={index}>
+            <td>{order.customer_id}</td>
+            <td>{order.user_id}</td>
+            <td>{order.menu_id}</td>
+            <td>{order.order_date}</td>
+            <td>{order.total_amount}</td>
+            <td>{order.orderType}</td> {/* Added orderType field */}
+            <td>
+                <button className="btn btn-primary" onClick={() => handleEdit(order)}>Edit</button>
+            </td>
+            <td>
+                <button className="btn btn-danger" onClick={() => handleDelete(order._id)}>Delete</button>
+            </td>
+        </tr>
+    ))}
+</tbody>
                     </table>
                 </div>
             </div>

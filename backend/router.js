@@ -6,7 +6,6 @@ const { getUserTypes, createUserType, getUserTypeById, deleteUserType, updateUse
 const { getCustomerById, createCustomer, getAllCustomers, updateCustomer, deleteCustomer } = require("./controllers/cutomerController");
 const { createFeedback, getAllFeedback, getFeedbackById, updateFeedback, deleteFeedback } = require("./controllers/feedbackController");
 const { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } = require("./controllers/orderController");
-const { createOrderType, getAllOrderTypes, getOrderTypeById, updateOrderType, deleteOrderType } = require("./controllers/orderTypeController");
 
 // Routes for Menu component
 router.get("/menu", getMenu);
@@ -29,12 +28,6 @@ router.get("/order/:id", getOrderById);
 router.put("/order/updateOrder/:id", updateOrder);
 router.delete("/order/deleteOrder/:id", deleteOrder);
 
-// Routes for OrderType component
-router.get("/ordertype", getAllOrderTypes);
-router.post("/ordertype/createOrderType", createOrderType);
-router.get("/ordertype/:id", getOrderTypeById);
-router.put("/ordertype/updateOrderType/:id", updateOrderType);
-router.delete("/ordertype/deleteOrderType/:id", deleteOrderType);
 
 // Routes for Customer component
 router.get("/customer/:id", getCustomerById);
