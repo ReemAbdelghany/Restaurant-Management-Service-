@@ -6,13 +6,14 @@ import Order from './components/order';
 import User from './components/user';
 import UserType from './components/userType';
 import Feedback from './components/feedback';
+import Menu from './components/menu';
+
 
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Route with NavbarLayout for pages needing the navbar */}
         <Route
           path="/customer"
           element={<NavbarLayout><Customer /></NavbarLayout>}
@@ -33,6 +34,11 @@ const App = () => {
           path="/feedback"
           element={<NavbarLayout><Feedback /></NavbarLayout>}
         />
+        <Route
+          path="/menu"
+          element={<NavbarLayout><Menu /></NavbarLayout>}
+        />
+
         {/* Route for main page */}
         <Route
           path="/"
