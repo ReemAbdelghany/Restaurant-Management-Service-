@@ -9,16 +9,13 @@ import Feedback from './components/feedback';
 import Menu from './components/menu';
 import MenuType from './components/menuType';
 
-
-
-
-
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Route for the root URL ("/") */}
         <Route
-          path="/customer"
+          path="/"
           element={<NavbarLayout><Customer /></NavbarLayout>}
         />
         <Route
@@ -44,11 +41,6 @@ const App = () => {
         <Route
           path="/menuType"
           element={<NavbarLayout><MenuType /></NavbarLayout>}
-        />
-        {/* Route for main page */}
-        <Route
-          path="/customer"
-          element={<NavbarLayout><Customer /></NavbarLayout>}
         />
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavbarLayout = ({ children }) => {
+    const location = useLocation();
+
     return (
         <div>
             {/* Top bar */}
@@ -37,7 +39,7 @@ const NavbarLayout = ({ children }) => {
                     <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                         <div className="sb-sidenav-menu">
                             <div className="nav">
-                                <Link to="/customer" className="nav-link">Customer</Link>
+                                <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Customer</Link>
                                 <Link to="/order" className="nav-link">Order</Link>
                                 <Link to="/user" className="nav-link">User</Link>
                                 <Link to="/userType" className="nav-link">User Type</Link>
