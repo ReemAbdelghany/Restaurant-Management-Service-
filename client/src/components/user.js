@@ -20,11 +20,28 @@ function UserPage() {
     const fetchUsers = async () => {
         try {
             const response = await axios.get('http://localhost:8000/users');
-            setUsers(response.data);
+            const usersData = response.data;
+            
+            // Fetch user types to associate with users
+            const userTypesResponse = await axios.get('http://localhost:8000/userTypes');
+            const userTypes = userTypesResponse.data.reduce((acc, userType) => {
+                acc[userType._id] = userType;
+                return acc;
+            }, {});
+    
+            // Map user data to include user type
+            const usersWithUserType = usersData.map(user => ({
+                ...user,
+                user_type: userTypes[user.user_type] || { type_name: 'N/A' } // Fallback to 'N/A' if user type not found
+            }));
+            
+            setUsers(usersWithUserType);
         } catch (error) {
             console.error('Error fetching users:', error);
         }
     };
+    
+    
 
     const fetchUserTypes = async () => {
         try {
@@ -143,7 +160,7 @@ function UserPage() {
                                 <tr key={index}>
                                     <td>{user.username}</td>
                                     <td>{user.password}</td>
-                                    <td>{user.user_type.type_name}</td>
+                                    <td>{user.user_type ? user.user_type.type_name : 'N/A'}</td>
                                     <td>{user.national_id}</td>
                                     <td>{user.phone_no}</td>
                                     <td>
