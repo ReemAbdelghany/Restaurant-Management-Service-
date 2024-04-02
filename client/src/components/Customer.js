@@ -14,7 +14,9 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:8000/customer')
       .then(res => {
-        setColumns(Object.keys(res.data[0]));
+        // Exclude the __v field from the columns
+        const filteredColumns = Object.keys(res.data[0]).filter(column => column !== '__v');
+        setColumns(filteredColumns);
         setRecords(res.data);
       })
       .catch(error => console.log(error));
