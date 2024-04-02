@@ -3,6 +3,8 @@ import React from 'react';
 import Dashboard from './components/dashboard';
 import Customer from './components/Customer';
 import Order from './components/order';
+import User from './components/user';
+import UserType from './components/userType';
 
 
 const App = () => {
@@ -14,6 +16,8 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/customer" element={<Customer />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/userType" element={<UserType />} />
         </Routes>
       </BrowserRouter>
     </div>
