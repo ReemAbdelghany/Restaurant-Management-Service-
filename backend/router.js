@@ -12,42 +12,42 @@ const { createOrderType, getAllOrderTypes, getOrderTypeById, updateOrderType, de
 router.get("/menu", getMenu);
 router.post("/menu/createMenu", createMenu);
 router.post("/menu/getMenu", getMenuById);
-router.post("/menu/updateMenu", updateMenu);
+router.put("/menu/updateMenu", updateMenu);
 router.delete("/menu/deleteMenu", deleteMenu);
 
 // Routes for MenuType component
 router.get("/menutype", getMenuType);
 router.post("/menutype/createMenuType", createMenuType);
 router.post("/menutype/getMenuType", getMenuTypeById);
-router.post("/menutype/updateMenuType", updateMenuType);
+router.put("/menutype/updateMenuType", updateMenuType);
 router.delete("/menutype/deleteMenuType", deleteMenuType);
 
 // Routes for Order component
 router.get("/order", getAllOrders);
 router.post("/order/createOrder", createOrder);
 router.get("/order/:id", getOrderById);
-router.post("/order/updateOrder/:id", updateOrder);
+router.put("/order/updateOrder/:id", updateOrder);
 router.delete("/order/deleteOrder/:id", deleteOrder);
 
 // Routes for OrderType component
 router.get("/ordertype", getAllOrderTypes);
 router.post("/ordertype/createOrderType", createOrderType);
 router.get("/ordertype/:id", getOrderTypeById);
-router.post("/ordertype/updateOrderType/:id", updateOrderType);
+router.put("/ordertype/updateOrderType/:id", updateOrderType);
 router.delete("/ordertype/deleteOrderType/:id", deleteOrderType);
 
 // Routes for Customer component
 router.get("/customer/:id", getCustomerById);
 router.post("/customer/createCustomer", createCustomer);
 router.get("/customer", getAllCustomers);
-router.post("/customer/updateCustomer/:id", updateCustomer);
+router.put("/customer/updateCustomer/:id", updateCustomer);
 router.delete("/customer/deleteCustomer/:id", deleteCustomer);
 
 // Routes for Feedback component
 router.post("/feedback", createFeedback);
 router.get("/feedback", getAllFeedback);
 router.get("/feedback/:id", getFeedbackById);
-router.post("/feedback/:id", updateFeedback);
+router.put("/feedback/:id", updateFeedback);
 router.delete("/feedback/:id", deleteFeedback);
 
 // User Routes
