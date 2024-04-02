@@ -47,8 +47,8 @@ const App = () => {
         />
         {/* Route for main page */}
         <Route
-          path="/"
-          element={<h1>Main Page</h1>}
+          path="/customer"
+          element={<NavbarLayout><Customer /></NavbarLayout>}
         />
       </Routes>
     </BrowserRouter>

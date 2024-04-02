@@ -10,16 +10,16 @@ const { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } = re
 // Routes for Menu component
 router.get("/menu", getMenu);
 router.post("/menu/createMenu", createMenu);
-router.post("/menu/getMenu", getMenuById);
-router.put("/menu/updateMenu", updateMenu);
-router.delete("/menu/deleteMenu", deleteMenu);
+router.get("/menu/getMenu/:id", getMenuById);
+router.put("/menu/updateMenu/:id", updateMenu);
+router.delete("/menu/deleteMenu/:id", deleteMenu);
 
 // Routes for MenuType component
 router.get("/menutype", getMenuType);
 router.post("/menutype/createMenuType", createMenuType);
-router.post("/menutype/getMenuType", getMenuTypeById);
-router.put("/menutype/updateMenuType", updateMenuType);
-router.delete("/menutype/deleteMenuType", deleteMenuType);
+router.get("/menutype/getMenuType/:id", getMenuTypeById);
+router.put("/menutype/updateMenuType/:id", updateMenuType);
+router.delete("/menutype/deleteMenuType/:id", deleteMenuType);
 
 // Routes for Order component
 router.get("/order", getAllOrders);

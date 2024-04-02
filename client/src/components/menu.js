@@ -1,17 +1,22 @@
+// MenuPage.js
+
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
 function MenuPage() {
     const [menus, setMenus] = useState([]);
+    const [menuTypes, setMenuTypes] = useState([]);
     const [formData, setFormData] = useState({
         _id: '',
         dish_name: '',
         dish_description: '',
-        dish_price: ''
+        dish_price: '',
+        diet_type: '' // Ensure diet_type is added to formData state
     });
 
     useEffect(() => {
         fetchMenus();
+        fetchMenuTypes();
     }, []);
 
     const fetchMenus = async () => {
@@ -20,6 +25,15 @@ function MenuPage() {
             setMenus(response.data);
         } catch (error) {
             console.error('Error fetching menus:', error);
+        }
+    };
+
+    const fetchMenuTypes = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/menutype');
+            setMenuTypes(response.data);
+        } catch (error) {
+            console.error('Error fetching menu types:', error);
         }
     };
 
@@ -36,7 +50,7 @@ function MenuPage() {
         try {
             let response;
             if (formData._id) {
-                response = await axios.put(`http://localhost:8000/menu/updateMenu/${formData._id}`, formData);
+                response = await axios.put(`http://localhost:8000/menu/updateMenu/${formData._id}`, { id: formData._id, ...formData });
             } else {
                 response = await axios.post('http://localhost:8000/menu/createMenu', formData);
             }
@@ -48,7 +62,8 @@ function MenuPage() {
                     _id: '',
                     dish_name: '',
                     dish_description: '',
-                    dish_price: ''
+                    dish_price: '',
+                    diet_type: '' // Reset diet_type after submission
                 });
                 fetchMenus();
             }
@@ -57,11 +72,10 @@ function MenuPage() {
             window.alert("Error adding/updating menu");
         }
     };
-    
 
     const handleDelete = async (menuId) => {
         try {
-            await axios.delete(`http://localhost:8000/menu/deleteMenu/${menuId}`);
+            await axios.delete(`http://localhost:8000/menu/deleteMenu/${menuId}`, { data: { id: menuId } });
             setMenus(prevMenus => prevMenus.filter(menu => menu._id !== menuId));
             console.log("Menu deleted successfully");
         } catch (error) {
@@ -74,7 +88,8 @@ function MenuPage() {
             _id: menu._id,
             dish_name: menu.dish_name,
             dish_description: menu.dish_description,
-            dish_price: menu.dish_price
+            dish_price: menu.dish_price,
+            diet_type: menu.diet_type // Set diet_type when editing
         });
     };
 
@@ -93,6 +108,15 @@ function MenuPage() {
                     <label className="form-label">Dish Price</label>
                     <input type="text" className="form-control" name="dish_price" value={formData.dish_price} onChange={handleChange} required />
                 </div>
+                <div className="mb-3">
+                    <label className="form-label">Diet Type</label>
+                    <select className="form-select" name="diet_type" value={formData.diet_type} onChange={handleChange} required>
+                        <option value="">Select diet type</option>
+                        {menuTypes.map(menuType => (
+                            <option key={menuType._id} value={menuType.diet_type}>{menuType.diet_type}</option>
+                        ))}
+                    </select>
+                </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 
@@ -105,6 +129,7 @@ function MenuPage() {
                                 <th>Dish Name</th>
                                 <th>Dish Description</th>
                                 <th>Dish Price</th>
+                                <th>Diet Type</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -115,6 +140,7 @@ function MenuPage() {
                                     <td>{menu.dish_name}</td>
                                     <td>{menu.dish_description}</td>
                                     <td>{menu.dish_price}</td>
+                                    <td>{menu.diet_type}</td> {/* Ensure diet_type is displayed */}
                                     <td>
                                         <button className="btn btn-primary" onClick={() => handleEdit(menu)}>Edit</button>
                                     </td>
