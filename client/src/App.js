@@ -7,6 +7,9 @@ import User from './components/user';
 import UserType from './components/userType';
 import Feedback from './components/feedback';
 import Menu from './components/menu';
+import MenuType from './components/menuType';
+
+
 
 
 
@@ -38,7 +41,10 @@ const App = () => {
           path="/menu"
           element={<NavbarLayout><Menu /></NavbarLayout>}
         />
-
+        <Route
+          path="/menuType"
+          element={<NavbarLayout><MenuType /></NavbarLayout>}
+        />
         {/* Route for main page */}
         <Route
           path="/"

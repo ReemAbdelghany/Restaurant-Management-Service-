@@ -42,7 +42,9 @@ const NavbarLayout = ({ children }) => {
                                 <Link to="/user" className="nav-link">User</Link>
                                 <Link to="/userType" className="nav-link">User Type</Link>
                                 <Link to="/feedback" className="nav-link">Customer Feedback</Link>
-                                <Link to="/menu" className="nav-link">Edit Menu</Link>
+                                <Link to="/menu" className="nav-link">Menu</Link>
+                                {/* <Link to="/menuType" className="nav-link">Menu Type</Link> */}
+
 
                                 {/* You can add more links as needed */}
                             </div>
