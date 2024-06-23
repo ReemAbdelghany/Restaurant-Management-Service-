@@ -21,6 +21,11 @@ const OrderSchema = new Schema({
     total_amount: {
         type: Number,
         required: true
+    },
+    orderType: {
+        type: String,
+        enum: ['Dine in', 'Delivery', 'PickUp'],
+        required: true
     }
 });
 

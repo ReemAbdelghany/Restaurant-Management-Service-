@@ -6,21 +6,20 @@ const { getUserTypes, createUserType, getUserTypeById, deleteUserType, updateUse
 const { getCustomerById, createCustomer, getAllCustomers, updateCustomer, deleteCustomer } = require("./controllers/cutomerController");
 const { createFeedback, getAllFeedback, getFeedbackById, updateFeedback, deleteFeedback } = require("./controllers/feedbackController");
 const { createOrder, getAllOrders, getOrderById, updateOrder, deleteOrder } = require("./controllers/orderController");
-const { createOrderType, getAllOrderTypes, getOrderTypeById, updateOrderType, deleteOrderType } = require("./controllers/orderTypeController");
 
 // Routes for Menu component
 router.get("/menu", getMenu);
 router.post("/menu/createMenu", createMenu);
-router.post("/menu/getMenu", getMenuById);
-router.put("/menu/updateMenu", updateMenu);
-router.delete("/menu/deleteMenu", deleteMenu);
+router.get("/menu/getMenu/:id", getMenuById);
+router.put("/menu/updateMenu/:id", updateMenu);
+router.delete("/menu/deleteMenu/:id", deleteMenu);
 
 // Routes for MenuType component
 router.get("/menutype", getMenuType);
 router.post("/menutype/createMenuType", createMenuType);
-router.post("/menutype/getMenuType", getMenuTypeById);
-router.put("/menutype/updateMenuType", updateMenuType);
-router.delete("/menutype/deleteMenuType", deleteMenuType);
+router.get("/menutype/getMenuType/:id", getMenuTypeById);
+router.put("/menutype/updateMenuType/:id", updateMenuType);
+router.delete("/menutype/deleteMenuType/:id", deleteMenuType);
 
 // Routes for Order component
 router.get("/order", getAllOrders);
@@ -29,12 +28,6 @@ router.get("/order/:id", getOrderById);
 router.put("/order/updateOrder/:id", updateOrder);
 router.delete("/order/deleteOrder/:id", deleteOrder);
 
-// Routes for OrderType component
-router.get("/ordertype", getAllOrderTypes);
-router.post("/ordertype/createOrderType", createOrderType);
-router.get("/ordertype/:id", getOrderTypeById);
-router.put("/ordertype/updateOrderType/:id", updateOrderType);
-router.delete("/ordertype/deleteOrderType/:id", deleteOrderType);
 
 // Routes for Customer component
 router.get("/customer/:id", getCustomerById);

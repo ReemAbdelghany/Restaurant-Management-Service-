@@ -3,8 +3,8 @@ const Order = require('../models/Order');
 // Create a new order
 async function createOrder(req, res) {
     try {
-        const {  customer_id, user_id, menu_id, order_date, total_amount } = req.body;
-        const newOrder = new Order({  customer_id, user_id, menu_id, order_date, total_amount });
+        const { customer_id, user_id, menu_id, order_date, total_amount, orderType } = req.body;
+        const newOrder = new Order({ customer_id, user_id, menu_id, order_date, total_amount, orderType });
         const savedOrder = await newOrder.save();
         res.status(201).json(savedOrder);
     } catch (error) {
@@ -39,10 +39,10 @@ async function getOrderById(req, res) {
 // Update order by ID
 async function updateOrder(req, res) {
     try {
-        const {  customer_id, user_id, menu_id, order_date, total_amount } = req.body;
+        const { customer_id, user_id, menu_id, order_date, total_amount, orderType } = req.body;
         const updatedOrder = await Order.findByIdAndUpdate(
             req.params.id,
-            {  customer_id, user_id, menu_id, order_date, total_amount },
+            { customer_id, user_id, menu_id, order_date, total_amount, orderType },
             { new: true }
         );
         if (updatedOrder) {
